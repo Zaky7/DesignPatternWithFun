@@ -6,7 +6,8 @@ Defination
 
 Scenario: Here we are implementing a weather Station with DisplayElement as Observer. We Define 3 Interfaces 
 * Subject (for weatherData) 
-* DisplayElement and Observer (for differentDisplay).
+* DisplayElement (for differentDisplay)
+* Observer (for differentDisplay).
 
 ```java
 //Subject
@@ -27,11 +28,8 @@ public void display();
 }
 
 ```
-Now in order to implement Observer pattern we make weather station implementing the Subject and _methods_
-for notifying all the observers on updations of the measurements
-:sleepy: Looking tough I will clear it in a moment.
+Now in order to implement Observer pattern here, we make weather station as the **Subject** and displayElements as the **observer**. Whenever measurements changed we will notify all Observers. 
 
-In WeatherData we have a function measurements changed which wiill __trigger:astonished:__ updation of all the Observers. It has other methods which are already descriptive.
 
 ```java
 public class WeatherData implements Subject {
@@ -81,8 +79,9 @@ public class WeatherData implements Subject {
 
 ```
 
-In currentConditionDisplay we have  a function update for updating the reading of various weather parameters
-and we are using **composition** for registering our observer.
+In currentConditionDisplay (a displayElement:pager:  for showing pressure and humidity reading). 
+and we are using **composition** for registering our observer using *weatherData* and implementing
+the Observer and DisplayElement Interface.
 
 
 
@@ -113,7 +112,7 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement{
 ```
 
 
-Using our implementation for currentDisplay Display Station.
+Using our implementation for Weather Station.
 
 ```java
 public class WeatherStation {
@@ -124,3 +123,6 @@ public class WeatherStation {
   }
 }
 ```
+
+Output
+>Current conditions: 80.0F degrees 65.0 % humidity
